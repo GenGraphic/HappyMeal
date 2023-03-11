@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "RestaurantApp",
-    "slug": "RestaurantApp",
+    "slug": "happ-meal-app",
+    "privacy": "public",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "happyMeal.V1"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,8 +32,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "8a3881b4-ac05-4540-90cf-51de8be46d51"
+        "projectId": "bfe47610-606d-4d4e-b1a9-2ea5709ddd6d"
       }
-    }
+    },
+    "owner": "happymealapp"
   }
 }
