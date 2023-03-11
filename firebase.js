@@ -1,12 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
+import firebaseAPIKey from "./apiKeys";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAaiGfJzLi9LTgr5wU_W1FM1ja_q_PRH9k",
+  apiKey: firebaseAPIKey,
   authDomain: "restaurantsapp-6f48a.firebaseapp.com",
   projectId: "restaurantsapp-6f48a",
   storageBucket: "restaurantsapp-6f48a.appspot.com",

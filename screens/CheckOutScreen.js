@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View, SafeAreaView, TextInput, Image, ScrollView, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, TextInput, Image, ScrollView, TouchableOpacity, KeyboardAvoidingView, Alert } from 'react-native'
 import React, { useState, useContext, useEffect } from 'react';
 import Adress from '../components/Adress';
 import ShoppingCartContext from '../ShoppingCartContext';
 import DishItem from '../components/DishItem';
 
+
 const CheckOutScreen = () => {
   const { itemsList } = useContext(ShoppingCartContext);
+  const { setItemsList } = useContext(ShoppingCartContext);
   const [itemsPrice, setItemsPrice] = useState(0);
  
   
@@ -26,6 +28,16 @@ const CheckOutScreen = () => {
   useEffect(() => {
     calculateTotal();
   }, [itemsList])
+
+  const placeOrder = () => {
+    //fisrt send email to info@happymeals.com
+
+    //second empty the list of items
+    setItemsList([]);
+
+    //give user a thank you alert
+    Alert.alert('Your order has beed placed succesfully.')
+  }
 
   return (
     <KeyboardAvoidingView 
@@ -60,7 +72,7 @@ const CheckOutScreen = () => {
 
       <ScrollView style={{width:'100%'}}>
         <View style={styles.cartList}>
-          <Text style={styles.titleAdress}>Shopping list</Text>
+          <Text style={styles.titleAdress}>Items:</Text>
           {itemsList.length === 0 ? //if list is empty than render the text that says that
             <View style={styles.ifEmptyList}>
               <Image
@@ -72,6 +84,7 @@ const CheckOutScreen = () => {
             itemsList.map((item) => {
             return (
               <DishItem
+              key={item.key}
               dishName={item.name}
               dishPrice={item.price}
               dishRestaurant={item.restaurantName}
@@ -119,7 +132,7 @@ const CheckOutScreen = () => {
       </View>
 
       <TouchableOpacity 
-      onPress={() => alert('Thank you for your order')}
+      onPress={placeOrder}
       style={styles.placeOrderBtn}>
         <Image 
           style={styles.iconLarge}
@@ -235,6 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F99746',
     borderRadius: 10,
     marginTop: 10,
+    marginBottom: 20,
     shadowColor: 'black',
     shadowOffset: {width:2, height:2},
     shadowOpacity: 0.2,

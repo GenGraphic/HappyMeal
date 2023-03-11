@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native'
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import ShoppingCartContext from '../ShoppingCartContext';
 
-const Dish = ({dishImg, restaurantName, dishName, dishPrice}) => {
+const Dish = ({dishImg, restaurantName, dishName, dishPrice, giveFeedback}) => {
     const { addItem } = useContext(ShoppingCartContext);
+    const [feedback, seFeedback] = useState(false);
+
 
 
     return (
@@ -17,7 +19,11 @@ const Dish = ({dishImg, restaurantName, dishName, dishPrice}) => {
                     <View style={styles.restaurantName}>
                         <Text style={styles.whiteTxt}>{restaurantName}</Text>
                     </View>
-                    <TouchableOpacity onPress={() => addItem(dishName, restaurantName, dishPrice)}>
+                    <TouchableOpacity onPress={() => {
+                            addItem(dishName, restaurantName, dishPrice)
+                            giveFeedback();
+                        }}
+                    >
                         <Image
                             style={styles.icon}
                             source={require('../assets/icons/add.png')}

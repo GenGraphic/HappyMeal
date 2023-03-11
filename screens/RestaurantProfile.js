@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, ScrollView } from 'react-native'
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import RestaurantsContext from '../RestaurantsContext';
 import { useNavigation } from '@react-navigation/native';
 import ShoppingCartContext from '../ShoppingCartContext';
@@ -8,12 +8,22 @@ const RestaurantProfile = ({route}) => {
   const { restaurants } = useContext(RestaurantsContext);
   const { itemsList } = useContext(ShoppingCartContext);
   const { addItem } = useContext(ShoppingCartContext);
+  const [feedback, setFeedback] = useState(false);
 
   const { restaurantKey } = route.params;
   const navigation = useNavigation();
 
   //this is the restaurant that has to be render.
   const restaurant = restaurants.find(elm => elm.key === restaurantKey);
+
+  //function that enable the feedback element and afre 1 second disabled it
+  //this function will run from the Dish element
+  const giveFeedback = () => {
+    setFeedback(true);
+    setTimeout(() => {
+      setFeedback(false)
+    },1500)
+  }
 
   return (
     <View style={styles.body}>
@@ -30,7 +40,7 @@ const RestaurantProfile = ({route}) => {
               </View>
             </ImageBackground>
           </TouchableOpacity>
-        </View>
+      </View>
 
       <ImageBackground
       style={styles.logo}
@@ -134,7 +144,9 @@ const RestaurantProfile = ({route}) => {
                 </View>
 
                 <View style={styles.addBtnCont}>
-                  <TouchableOpacity style={styles.addBtn} onPress={() => addItem(item.name, item.restaurant, item.price)}>
+                  <TouchableOpacity style={styles.addBtn} onPress={() => {
+                    giveFeedback();
+                    addItem(item.name, item.restaurant, item.price)}}>
                     <Text style={styles.plsuIcon}>+</Text>
                   </TouchableOpacity>
                 </View>
@@ -145,6 +157,12 @@ const RestaurantProfile = ({route}) => {
           }
         </ScrollView>
       </View>
+
+      {feedback &&
+        <View style={styles.feedback}>
+          <Text style={{color: '#FFF'}}>Item was added...</Text>
+        </View>
+      }
       
     </View>
   )
@@ -292,5 +310,15 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: 'bold',
     fontSize: 20
+  },
+  feedback: {
+    position: 'absolute',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    top: 0,
+    padding: 5,
+    borderRadius: 5,
+    alignItems: 'center',
+    alignSelf: 'center'
   }
+
 })

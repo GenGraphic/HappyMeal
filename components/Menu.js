@@ -3,10 +3,13 @@ import React, {useState, useContext, useEffect} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import ShoppingCartContext from '../ShoppingCartContext';
 
-const Menu = () => {
+
+//the menu recive the colors from the screen in witch the Menu is beeing rendered
+const Menu = ({colorHome, colorLocation}) => {
     const [cartItems, setCartItems] = useState(0);
     const { itemsList } = useContext(ShoppingCartContext);
 
+    //if the length of shopping list changes, change the number on top of icon cart
     useEffect(() => {
         let itemsLength = itemsList.length;
         setCartItems(itemsLength)
@@ -17,23 +20,23 @@ const Menu = () => {
     return (
         <View style={styles.body}>
             <TouchableOpacity 
-            onPress={() => naviagtion.navigate('Home')}
+            onPress={() => {naviagtion.navigate('Home')}}
             style={styles.option}>
                 <Image
-                style={styles.icon}
-                source={require('../assets/icons/home-orange.png')}
+                style={[styles.icon, {tintColor: colorHome}]}
+                source={require('../assets/icons/homeIcon.png')}
                 />
-                <Text style={[styles.optionTxt, {color:'#F99746'}]}>Home</Text>
+                <Text style={[styles.optionTxt, {color: colorHome}]}>Home</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-            onPress={() => naviagtion.navigate('RestaurantsList')} 
+            onPress={() => {naviagtion.navigate('RestaurantsList')}} 
             style={styles.option}>
                 <Image
-                style={styles.icon}
+                style={[styles.icon, {tintColor: colorLocation}]}
                 source={require('../assets/icons/location.png')}
                 />
-                <Text style={styles.optionTxt}>Kitchens</Text>
+                <Text style={[styles.optionTxt, {color: colorLocation}]}>Kitchens</Text>
             </TouchableOpacity>
 
             <Image

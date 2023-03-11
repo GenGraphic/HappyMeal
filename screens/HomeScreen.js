@@ -7,10 +7,20 @@ import Dish from '../components/Dish';
 import Menu from '../components/Menu';
 
 const HomeScreen = () => {
+  const [feedback, setFeedback] = useState(false);
   const { userData } = useContext(UserContext);
   const { restaurants } = useContext(RestaurantsContext);
 
   const [popularDishes, setPopularDishes] = useState([]);
+
+  //function that enable the feedback element and afre 1 second disabled it
+  //this function will run from the Dish element
+  const giveFeedback = () => {
+    setFeedback(true);
+    setTimeout(() => {
+      setFeedback(false)
+    },1500)
+  }
 
   //useEffet lets you call a function on load
   useEffect(() => {
@@ -55,7 +65,7 @@ const HomeScreen = () => {
 
       <View>
         <ScrollView horizontal={true} style={{flexGrow:0}} contentContainerStyle={styles.categoryList} showsHorizontalScrollIndicator={false}>
-        <View style={styles.category}>
+        <View style={styles.category} key={1}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/sushi.png')}
@@ -63,7 +73,7 @@ const HomeScreen = () => {
           <Text>sushi</Text>
         </View>
 
-        <View style={styles.category}>
+        <View style={styles.category} key={2}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/salad.png')}
@@ -71,7 +81,7 @@ const HomeScreen = () => {
           <Text>salad</Text>
         </View>
 
-        <View style={styles.category}>
+        <View style={styles.category} key={3}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/roasted-chicken.png')}
@@ -79,7 +89,7 @@ const HomeScreen = () => {
           <Text>chicken</Text>
         </View>
 
-        <View style={styles.category}>
+        <View style={styles.category} key={4}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/ramen.png')}
@@ -87,7 +97,7 @@ const HomeScreen = () => {
           <Text>ramen</Text>
         </View>
 
-        <View style={styles.category}>
+        <View style={styles.category} key={5}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/pizza.png')}
@@ -95,7 +105,7 @@ const HomeScreen = () => {
           <Text>pizza</Text>
         </View>
 
-        <View style={styles.category}>
+        <View style={styles.category} key={6}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/hot-pot.png')}
@@ -103,7 +113,7 @@ const HomeScreen = () => {
           <Text>breakfast</Text>
         </View>
 
-        <View style={styles.category}>
+        <View style={styles.category} key={7}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/hot.png')}
@@ -111,7 +121,7 @@ const HomeScreen = () => {
           <Text>lunch</Text>
         </View>
 
-        <View style={styles.category}>
+        <View style={styles.category} key={8}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/cake.png')}
@@ -119,7 +129,7 @@ const HomeScreen = () => {
           <Text>desert</Text>
         </View>
 
-        <View style={styles.category}>
+        <View style={styles.category} key={9}>
           <Image
             style={styles.categoryImg}
             source={require('../assets/icons/food-categories/burger.png')}
@@ -136,7 +146,8 @@ const HomeScreen = () => {
         <ScrollView horizontal={true} style={{flexGrow:0}} contentContainerStyle={styles.restaurantsList} showsHorizontalScrollIndicator={false}>
           {restaurants.map((item) => {
           return(
-            <Restaurant 
+            <Restaurant
+              key={item.key} 
               restaurantKey={item.key} 
               img={item.logo}
               restaurantType={item.type}
@@ -153,24 +164,31 @@ const HomeScreen = () => {
         </ScrollView>
       </View>
 
-      <Text style={{fontSize: 16, fontWeight:'bold', margin: 10, alignSelf:'flex-start'}}>Best rated Restaurants</Text>
+      <Text style={{fontSize: 16, fontWeight:'bold', margin: 10, alignSelf:'flex-start'}}>Best rated food</Text>
 
       <ScrollView contentContainerStyle={{paddingBottom:100}} showsVerticalScrollIndicator={false}>
           {popularDishes.map((item) => {
             return (
               <Dish
-                key={item.index}
+                key={item.key}
                 dishImg={item.foto}
                 restaurantName={item.restaurant}
                 dishName={item.name}
                 dishPrice={item.price}
+                giveFeedback={giveFeedback}
               >
               </Dish>
               )
             })
           }
         </ScrollView>
-        <Menu></Menu>
+        <Menu colorHome={'#F99746'} colorLocation={'#000'} ></Menu>
+        {feedback &&
+          <View style={styles.feedback}>
+            <Text style={{color: '#FFF'}}>Item was added...</Text>
+          </View>
+        }
+        
     </SafeAreaView>
   )
 }
@@ -228,4 +246,12 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50
   },
+  feedback: {
+    position: 'absolute',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    top: 50,
+    padding: 5,
+    borderRadius: 5,
+    alignItems: 'center'
+  }
 })

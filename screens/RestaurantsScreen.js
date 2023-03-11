@@ -48,7 +48,7 @@ const RestaurantsScreen = () => {
         numColumns={2}
         style={{width:'100%', padding:5}}
       />
-      <Menu></Menu>
+      <Menu colorHome={'#000'} colorLocation={'#F99746'}></Menu>
     </SafeAreaView>
   )
 }

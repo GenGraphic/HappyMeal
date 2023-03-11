@@ -17,20 +17,23 @@ export function RestaurantsProvider({ children }) {
                     price: 12.5,
                     popular: true,
                     restaurant: '4EverFood',
+                    key: 123
                 },
                 {
                     name: 'Ramen',
                     foto: require('./assets/popular-food/ramen.jpg'),
                     price: 14.5,
                     popular: false,
-                    restaurant: '4EverFood'
+                    restaurant: '4EverFood',
+                    key: 321
                 },
                 {
                     name: 'Ice-cream',
                     foto: require('./assets/popular-food/ice-cream.jpg'),
                     price: 14.5,
                     popular: true,
-                    restaurant: '4EverFood'
+                    restaurant: '4EverFood',
+                    key: 231
                 },
             ],
             logo: require('./assets/restaurantsLogo/4ever-logo.png'),
@@ -48,14 +51,16 @@ export function RestaurantsProvider({ children }) {
                     foto: require('./assets/popular-food/salad.jpg'),
                     price: 11.5,
                     popular: true,
-                    restaurant: 'Deja Vu'
+                    restaurant: 'Deja Vu',
+                    key: 234
                 },
                 {
                     name: 'Rice',
                     foto: require('./assets/popular-food/rice.jpg'),
                     price: 8,
                     popular:false,
-                    restaurant: 'Deja Vu'
+                    restaurant: 'Deja Vu',
+                    key: 324
                 },
             ],
             logo: require('./assets/restaurantsLogo/dejavu-logo.png'),
@@ -73,14 +78,16 @@ export function RestaurantsProvider({ children }) {
                     foto: require('./assets/popular-food/pizza.jpg'),
                     price: 12.5,
                     popular:false,
-                    restaurant: 'Snack'
+                    restaurant: 'Snack',
+                    key:345
                 },
                 {
                     name: 'Burger',
                     foto: require('./assets/popular-food/fast-food.jpg'),
                     price: 13,
                     popular: true,
-                    restaurant: 'Snack'
+                    restaurant: 'Snack',
+                    key: 543
                 },
             ],
             logo: require('./assets/restaurantsLogo/snack-logo.png'),
