@@ -1,0 +1,34 @@
+Introduction:
+The Happy Meal app is an application that connects users to restaurants within their vicinity. The app aims to provide users with an easy and efficient way to order food from their favorite restaurants without having to leave their homes. This report will detail the development process of the Happy meal app, from the concept phase to the evaluation phase.
+
+Concept:
+The idea is to develop an application that would allow users to browse through menus, make orders, track their delivery status and make payments through the app. The application is able to provide users with the ability to search for restaurants within their vicinity and view their menus. The Restaurants can recive ratings from it's customers and based on that, they are beeing rendered on Home Page witch will get them more attention. Also the popular dishes are shown on the first page of the Application. 
+For the Login/Signup sytem Firebase was used to improve the efficiency of the app and make it relieble, and secure. This also gives us the options to manage the user credentials like password, E-mail Adress, name and profile image. Another important feature that is also enabled is letting user to delete his account if the Application services are not needed anymore. 
+We want that the aplication to be scalable, this is the reason we choosed React Native for this project. This gives us the ability to allways add more restaurants without the need to hardcode every new element.  
+
+Development:
+The food delivery app was developed using React Native and Expo. React Native is a popular framework that enables developers to build native apps for Android and iOS platforms using a single codebase. Expo is a set of tools that allows developers to build, deploy, and test React Native apps easily. The use of these technologies allowed for the development of a reliable and efficient app. 
+
+Wireframing:
+Is a crucial stage in the development process of any mobile application. The Happy Meal app's wireframes were created using Figma, which allowed the team to create a visual representation of the app's layout and user flow. The wireframes included screens for the home page, restaurant profiles, menus,signin/signup page, location page, user profile, ordering system, and check out page. The team also included wireframes for the app's onboarding process, which guided users through the app's features and functionality.
+
+User feedback:
+User feedback is an essential component of any mobile application's development process. The Happy Meal team gathered feedback from users through several channels, including focus groups, and user testing. The team used this feedback to improve the app's features, user interface, and user experience.
+
+Prototyping:
+A prototype of the app was developed using Expo. The prototype was used to test the app's functionality and user experience. The prototype was shared with the client and stakeholders for feedback and approval. The prototype helped to provide a clearer understanding of the app's functionality and user experience.
+
+Development:
+After the prototype was approved, development of the app should began. The app was developed using React Native and Expo. The app's features include signin/signup sytem, filtering popular dishes,  restaurant search, odering. The use of React Native and Expo allowed for the development of a reliable and efficient app.
+
+Unit testing:
+Unit testing was carried out to ensure the app's features worked as intended. Unit tests were written for each component of the app to ensure the app was reliable and bug-free. The unit tests helped to ensure that the app was functioning as intended and that there were no bugs or errors.
+
+Evaluation:
+After development was complete, the app was evaluated to ensure it met the client's requirements. The app was tested for functionality, usability, and performance. The evaluation showed that the app met the client's requirements and provided users with an easy and efficient way to order food from their favorite restaurants. The evaluation helped to identify any areas where improvements could be made to the app's functionality and user experience.
+
+Future Improvements:
+While the app has been developed successfully and has met the client's requirements, there is still room for improvement. In the future, the app could be updated with new features, such as the ability to provide users with recommendations based on their previous orders or their location. Additionally, the app could be integrated with social media platforms to allow users to share their favorite dishes and restaurants with their friends, and order tracking system.
+
+Conclusion:
+The Happy Meal app is an excellent example of how React Native and Expo can be used to build a high-quality mobile application. The development process involved several stages, including planning, design, development, and testing. The team used Agile development methodologies, which allowed them to work in sprints and iterate quickly. The team also used analytics tools to evaluate the app's performance and gather feedback from users.
